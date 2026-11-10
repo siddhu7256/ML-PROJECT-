@@ -60,28 +60,6 @@ The UCI credit-card-default notebook explores the following workflow:
 6. Investigate class-imbalance handling, including oversampling and SMOTE.
 7. Compare model behaviour on the held-out test data.
 
-## Results currently recorded in the notebook
-
-The following figures are taken from saved outputs in `Part3_Model_Validation_Class_Imbal_Handling.ipynb`. They are historical notebook results, not a claim that a final model has been selected or independently reproduced.
-
-| Experiment | Test accuracy | Default-class recall | Additional result |
-|---|---:|---:|---|
-| Decision Tree baseline | 82.1% | 36.3% | Confusion matrix: TN 4,449; FP 238; FN 836; TP 477 |
-| Logistic Regression baseline | 81.4% | 27.1% | Test classification report |
-| Logistic Regression with SMOTE | 80.2% | 46.8% | ROC-AUC: 0.7319 |
-
-**Interpretation:** In the recorded experiments, applying SMOTE increased the Logistic Regression model's recall for the default class from approximately 27.1% to 46.8%, while test accuracy decreased from approximately 81.4% to 80.2%. This illustrates the trade-off between detecting more defaulters and overall classification accuracy.
-
-There is **no verified 92% default-class recall result** in the saved evaluation outputs inspected for this README. That figure has therefore been removed.
-
-### Evaluation caveats
-
-- The reported metrics are copied from existing notebook outputs; rerun the notebooks to reproduce them in the current environment.
-- Some earlier resampling experiments perform oversampling before the train/test split. Those results may be affected by data leakage and should not be treated as reliable hold-out estimates.
-- The SMOTE Logistic Regression experiment records resampling on the training data and evaluation on the original, imbalanced test set.
-- A final model comparison should use a fixed stratified split, fit all preprocessing and resampling steps on training data only, and report precision, recall, F1-score, ROC-AUC, and PR-AUC for the same untouched test set.
-- The saved Logistic Regression run also reports a convergence warning. Feature scaling and appropriate solver settings should be addressed when the model is refactored.
-
 ## Technologies
 
 - Python
